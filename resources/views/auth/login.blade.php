@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">
+                    <h3>Area de clientes</h3>                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
@@ -45,7 +46,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        Recuerdame
                                     </label>
                                 </div>
                             </div>
@@ -53,12 +54,23 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
+                                <button class="btn btn-primary">Ingresar</button>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-4">
+                            <div class="col-md-3 offset-md-3 align-center">
+                                <a href="{{ url('auth/google') }}" class="d-flex justify-content-center btn btn-danger">
+                                    <span class="fa fa-google"></span>
+                                    Google
+                                </a>
+                            </div>
+                            <div class="col-md-3 align-center">
+                                <a href="{{ url('auth/facebook') }}" class="d-flex justify-content-center btn btn-info">
+                                    Facebook
                                 </a>
                             </div>
                         </div>

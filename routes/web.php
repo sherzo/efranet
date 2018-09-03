@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'auth/{provider}'], function(){
+    Route::get('redirect', 'SocialAuthController@redirect');
+    Route::get('callback', 'SocialAuthController@callback');
+    Route::post('register', 'SocialAuthController@register');
+});
