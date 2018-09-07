@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Inicio de sesión al area de clientes')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -64,13 +66,13 @@
 
                         <div class="form-group row mt-4">
                             <div class="col-md-3 offset-md-3 align-center">
-                                <a href="{{ url('auth/google') }}" class="d-flex justify-content-center btn btn-danger">
+                                <a href="{{ url('auth/google/redirect') }}" class="d-flex justify-content-center btn btn-danger">
                                     <span class="fa fa-google"></span>
                                     Google
                                 </a>
                             </div>
                             <div class="col-md-3 align-center">
-                                <a href="{{ url('auth/facebook') }}" class="d-flex justify-content-center btn btn-info">
+                                <a href="{{ url('auth/facebook/redirect') }}" class="d-flex justify-content-center btn btn-info">
                                     Facebook
                                 </a>
                             </div>

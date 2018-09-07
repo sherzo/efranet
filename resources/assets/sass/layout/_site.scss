@@ -1,5 +1,16 @@
-
-
 $theme-colors: (
   "primary": $dark-blue,
 );
+
+@media (min-width: 991px) {
+	aside#menu {
+		position: fixed;
+		width: 350px; 
+	}
+	
+	main#content {
+    	width: calc(100% - 320px);
+    	margin-left: 320px;
+	}
+}
+

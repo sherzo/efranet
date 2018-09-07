@@ -24,3 +24,13 @@ Route::group(['prefix' => 'auth/{provider}'], function(){
     Route::get('callback', 'SocialAuthController@callback');
     Route::post('register', 'SocialAuthController@register');
 });
+
+Route::group(['middleware' => 'auth'], function(){
+		Route::get('profile', 'ProfileController@index');
+		Route::post('profile', 'ProfileController@store');
+		Route::get('my-services', 'ServiceController@index');
+
+		Route::resources([
+			'clients' => 'ClientController'
+		]);
+});
