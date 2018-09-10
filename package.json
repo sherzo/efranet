@@ -20,6 +20,9 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "font-awesome-icons": "^1.4.3"
+        "font-awesome-icons": "^1.4.3",
+        "vue-progressbar": "^0.7.5",
+        "vue-router": "^3.0.1",
+        "vuex": "^3.0.1"
     }
 }

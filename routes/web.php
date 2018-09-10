@@ -34,3 +34,5 @@ Route::group(['middleware' => 'auth'], function(){
 			'clients' => 'ClientController'
 		]);
 });
+
+Route::post('check-domain', 'DomainController@check');
