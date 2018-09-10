@@ -17,44 +17,57 @@
 			</div>
 		</div>
 		
+		<div class="content">
 
-		<div class="row" v-if="result">
-			<div class="col-md-12 center-align pt-4">
-				<span v-if="available" class="text-success text-lg">
-					¡Felicidades! <strong>{{ showDomain }}</strong> se encuentra disponible
-				</span>
-				
-				<span v-else class="text-danger text-lg">
-					{{ showDomain }} no esta disponible
-				</span>
+			<div class="row" v-if="result">
+				<div class="col-md-12 center-align">
+					<span v-if="available" class="text-success text-lg">
+						¡Felicidades! <strong>{{ showDomain }}</strong> se encuentra disponible
+					</span>
+					
+					<span v-else class="text-danger text-lg">
+						{{ showDomain }} no esta disponible
+					</span>
+				</div>
+
+				<div class="col-md-12 center-align pt-2" v-if="available">
+					<span class="text-lg">$18.00 USD</span> 
+					<button class="btn btn-primary btn-sm" @click="process"> Procesar</button>
+				</div>
 			</div>
 
-			<div class="col-md-12 center-align pt-2" v-if="available">
-				<span class="text-lg">$18.00 USD</span> 
-				<button class="btn btn-primary btn-sm"> Procesar</button>
-			</div>
-		</div>
-
-		<div class="row" v-if="result && suggestions.length > 0">
-			<div class="col-md-12">
-				<hr>
-				<p class="text-lg">Dominios sugeridos</p>
-				<hr>
-				<div class="row" v-for="(suggestion, i) in suggestions" :key="i" v-if="i < 3">
-					<div class="col-md-10"> {{ suggestion }} </div>
-					<div class="col-md-2">
-							<input type="checkbox" :value="i" id="checkboxFiveInput" name="" />
+			<div class="row" v-if="result && suggestions.length > 0">
+				<div class="col-md-12">
+					<hr>
+					<p class="text-lg">Dominios sugeridos</p>
+					<div class="row" v-for="(suggestion, i) in suggestions" :key="i" v-if="i < 3">
+						<div class="col-md-10"> {{ suggestion }} </div>
+						
+						<div class="col-md-2">
+							<input type="checkbox" :value="i" id="checkboxFiveInput" name="" />	
+						</div>
+						<hr>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-12 center-align">
+							<button type="submit" class="btn btn-primary btn-xs center-align">Procesar</button>
 						</div>
 					</div>
 				</div>
-				
-				<button type="submit" class="btn btn-primary btn-xs center-align">Procesar</button>
 			</div>
 		</div>
 	</section>
 </template>
 
 <style lang="scss">
+	.content {
+		margin-top: 1rem;
+		padding: 2rem;
+		background: white; 
+		border-radius: .7rem;
+	}
+
 	.container-group {
 		border-radius: 10px;
 		background: #3b6c8c !important;
@@ -102,6 +115,10 @@
 				this.domain = this.domain + this.tlds[i]
 				this.err = true
 				this.search()
+			},
+			process () {
+				let domain = this.showDomain
+				this.$router.push({name: 'purchase', params: { domain }})
 			},
 			search () {
 				let form = {
