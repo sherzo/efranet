@@ -7,7 +7,6 @@ use Curl;
 
 class DomainController extends Controller
 {
-
     public function check(Request $request) 
     {
 		$primaryTlds = ['com', 'net', 'biz', 'us', 'info'];
@@ -17,7 +16,6 @@ class DomainController extends Controller
 		$seach = $request->search;
 		$isDomain = strpos($seach, '.');
 	
-
 		if($isDomain) { // Si es un dominio con tlds divido y consulto 
 			list($domain, $tlds) = explode('.', $seach);
 		}else { // Consulto el .com
@@ -38,7 +36,7 @@ class DomainController extends Controller
 		$available = ($status == 'available');
 		
 		// Consulto las sugerencias
-		$api_url = env('URL_RESELLER_API');
+		$api_url = env('URL_RESELLER_API_TEST');
 		$url = $api_url . "api/domains/v5/suggest-names.json?auth-userid=$reseller_id&api-key=$api_key&keyword=$domain";
 
 		$response = Curl::to($url)
@@ -62,7 +60,7 @@ class DomainController extends Controller
 			foreach($filtered as $suggestion) {
 				list($domainSuggestion, $tldSuggestion) = explode('.', $suggestion);
 
-				foreach($primaryTlds as $tld) { // Si coincide con los tlds principales
+				foreach($primaryTlds as $tld) {	// Si coincide con los tlds principales
 					if($tld == $tldSuggestion) {
 						$suggestions->push($suggestion);
 					}
@@ -75,7 +73,7 @@ class DomainController extends Controller
 		
 
 		return [
-			'available' => $available,
+			'available' => $status,
 			'isDomain' => $isDomain,
 			'suggestions' => $suggestions
 		];

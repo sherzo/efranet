@@ -17,46 +17,55 @@
 			</div>
 		</div>
 		
-		<div class="content">
-
-			<div class="row" v-if="result">
-				<div class="col-md-12 center-align">
-					<span v-if="available" class="text-success text-lg">
-						¡Felicidades! <strong>{{ showDomain }}</strong> se encuentra disponible
-					</span>
-					
-					<span v-else class="text-danger text-lg">
-						{{ showDomain }} no esta disponible
-					</span>
-				</div>
-
-				<div class="col-md-12 center-align pt-2" v-if="available">
-					<span class="text-lg">$18.00 USD</span> 
-					<button class="btn btn-primary btn-sm" @click="process"> Procesar</button>
-				</div>
+		<div class="card mt-4 mb-4">
+			<div class="card-body center-align">
+				<img src="" alt="" class="img-responsive">
+				<strong class="text-lg">.com</strong>
 			</div>
+		</div>
 
-			<div class="row" v-if="result && suggestions.length > 0">
-				<div class="col-md-12">
-					<hr>
-					<p class="text-lg">Dominios sugeridos</p>
-					<div class="row" v-for="(suggestion, i) in suggestions" :key="i" v-if="i < 3">
-						<div class="col-md-10"> {{ suggestion }} </div>
+		<div class="card mt-4 mb-4" v-if="result">
+		  	<div class="card-body">		 
+				<div class="row" >
+					<div class="col-md-12 center-align">
+						<span v-if="available" class="text-success text-lg">
+							¡Felicidades! <strong>{{ showDomain }}</strong> se encuentra disponible
+						</span>
 						
-						<div class="col-md-2">
-							<input type="checkbox" :value="i" id="checkboxFiveInput" name="" />	
-						</div>
-						<hr>
+						<span v-else class="text-danger text-lg">
+							{{ showDomain }} no esta disponible
+						</span>
 					</div>
-					
-					<div class="row">
-						<div class="col-md-12 center-align">
-							<button type="submit" class="btn btn-primary btn-xs center-align">Procesar</button>
+
+					<div class="col-md-12 center-align pt-2" v-if="available">
+						<span class="text-lg">$18.00 USD</span> 
+						<button class="btn btn-primary btn-sm" @click="process"> Procesar</button>
+					</div>
+				</div>
+
+				<div class="row" v-if="suggestions.length > 0">
+					<div class="col-md-12">
+						<hr>
+						<p class="text-lg">Dominios sugeridos</p>
+						<div class="row" v-for="(suggestion, i) in suggestions" :key="i" v-if="i < 3">
+							<div class="col-md-10"> {{ suggestion }} </div>
+							
+							<div class="col-md-2">
+								<input type="checkbox" :value="i" id="checkboxFiveInput" name="" />	
+							</div>
+							<hr>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12 center-align">
+								<button type="submit" class="btn btn-primary btn-xs center-align">Procesar</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</section>
 </template>
 
